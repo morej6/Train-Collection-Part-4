@@ -1,0 +1,66 @@
+﻿<Window x:Class="Assigment4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Assigment4"
+        mc:Ignorable="d"
+        Title="Train Schedule" Height="350" Width="525">
+    <Grid>
+        <TabControl x:Name="tabControl" Margin="10,25,0,0" >
+            <TabItem Header="All Stations">
+                <Grid Background="#FFE5E5E5" >
+                    <Label x:Name="label" Content="Station Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <ListBox x:Name="listBox" HorizontalAlignment="Left" Margin="10,36,0,0" Width="142" SelectionChanged="listBox_SelectionChanged"/>
+                    <TextBox x:Name="textBox" Margin="268,23,0.2,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <Label x:Name="label1" Content="Name" HorizontalAlignment="Left" Margin="162,23,0,0" VerticalAlignment="Top" Width="40"/>
+                    <Label x:Name="label2" Content="ID" HorizontalAlignment="Left" Margin="162,54,0,0" VerticalAlignment="Top" Width="21"/>
+                    <Label x:Name="label3" Content="Location" HorizontalAlignment="Left" Margin="162,81,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="0.639,0.555"/>
+                    <Label x:Name="label4" Content="FareZone" HorizontalAlignment="Left" Margin="162,107,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.516,0.992" Width="67"/>
+                    <Label x:Name="label5" Content="Image" HorizontalAlignment="Left" Margin="162,160,0,0" VerticalAlignment="Top" Width="51"/>
+                    <TextBox x:Name="textBox1" Margin="268,54,0.2,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBox2" Margin="268,81,0.2,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBox3" Margin="268,113,0.2,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                    <Image x:Name="image" Margin="213,164,10.2,10"  />
+                    <Label x:Name="Mileage_To_Penn" Content="Mileage To Penn" HorizontalAlignment="Left" Margin="162,133,0,0" VerticalAlignment="Top" Width="101"/>
+                    <TextBox x:Name="textBox5" Margin="268,138,0.2,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Branch Schedule">
+                <Grid Background="#FFE5E5E5" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="463*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="listBox1" Margin="10,81,0,0" Width="121" HorizontalAlignment="Left" SelectionChanged="listBox1_SelectionChanged" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label6" Content="Branch ID" HorizontalAlignment="Left" Margin="11,15,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="textBox4" HorizontalAlignment="Left" Height="23" Margin="36.2,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" Grid.Column="1" ToolTip="ID for the Branch file that was read in"/>
+                    <Label x:Name="label7" Content="Branch Train Ids" HorizontalAlignment="Left" Margin="11,50,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <ListView x:Name="listView" Margin="96.2,81,0.2,0" Grid.Column="1">
+                        
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Station ID" DisplayMemberBinding="{Binding StationID}"/>
+                                <GridViewColumn Header="Time" DisplayMemberBinding="{Binding Time}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Menu x:Name="menu" Height="20" VerticalAlignment="Top">
+            <MenuItem Header="File" Click="MenuItem_Click">
+                <MenuItem Header="Open Branch Schedule"/>
+                <Separator/>
+                <MenuItem Header="Exit" Click="MenuItem_Click_3"/>
+            </MenuItem>
+            <MenuItem Header="Import" Click="MenuItem_Click_1">
+                <MenuItem Header="Stations from JSON..."/>
+            </MenuItem>
+            <MenuItem Header="Help" Click="MenuItem_Click_2">
+                <MenuItem Header="About..."/>
+            </MenuItem>
+        </Menu>
+
+    </Grid>
+</Window>
